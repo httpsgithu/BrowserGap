@@ -12,4 +12,9 @@ sudo apt install -y libvips libjpeg-dev
 ./install_bundle_deps.sh
 ./global_install_bundle_deps.sh
 sudo groupadd browsers
+echo "(if you're not on a linux system don't worry about this step)"
+echo "You need to edit sudoers file with visudo to add"
+echo "ALL ALL=(:browsers) NOPASSWD:ALL"
+read -p "Press enter to continue to visudo "
+sudo visudo
 

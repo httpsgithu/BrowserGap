@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import {fileURLToPath} from 'url';
 
 import branchName from 'current-git-branch';
 import {FRAME_CONTROL} from './public/translateVoodooCRDP.js';
@@ -22,8 +23,7 @@ export const DEBUG = {
 };
 
 // test for webpack
-//export const APP_ROOT = path.dirname(fileURLToPath(import.meta.url));
-export const APP_ROOT = __dirname;
+export const APP_ROOT = path.dirname(fileURLToPath(import.meta.url));
 
 export const STAGING = branchName() == 'staging';
 export const MASTER = branchName() == 'master';
@@ -34,7 +34,7 @@ export const GO_SECURE = fs.existsSync(path.resolve( APP_ROOT, 'sslcert', 'maste
 export const version = 'v1';
 export const COOKIENAME = `litewait-${version}-userauth-${GO_SECURE?'sec':'nonsec'}`;
 
-export const SECURE_VIEW_SCRIPT = path.join(__dirname, 'zombie-lord', 'scripts', 'get_download_view_url.sh');
+export const SECURE_VIEW_SCRIPT = path.join(APP_ROOT, 'zombie-lord', 'scripts', 'get_download_view_url.sh');
 
 export async function throwAfter(ms, command, port) {
   await sleep(ms);

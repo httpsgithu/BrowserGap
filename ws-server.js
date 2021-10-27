@@ -15,7 +15,7 @@
   import {pluginsDemoPage} from './public/plugins/demo/page.js';
   import zl from './zombie-lord/api.js';
   import {start_mode} from './args.js';
-  import {version, /*APP_ROOT,*/ BRANCH, COOKIENAME, GO_SECURE, DEBUG} from './common.js';
+  import {version, APP_ROOT, BRANCH, COOKIENAME, GO_SECURE, DEBUG} from './common.js';
   import {timedSend, eventSendLoop} from './server.js';
 
   export const fileChoosers = new Map();
@@ -97,8 +97,8 @@
             ],
             mediaSrc: [
               "'self'",
-              "https://isolation.site:*",
-              "https://demo.browsergap.dosyago.com:*"
+              "http://*:*",
+              "https://*:*"
             ],
             connectSrc: [
               "'self'",
@@ -132,12 +132,12 @@
       });
 
     if ( start_mode == "signup" ) {
-      app.get("/", (req,res) => res.sendFile(path.join(__dirname, 'public', 'index.html'))); 
+      app.get("/", (req,res) => res.sendFile(path.join(APP_ROOT, 'public', 'index.html'))); 
     } else {
       if ( DEBUG.mode == 'dev' ) {
-        app.get("/", (req,res) => res.sendFile(path.join(__dirname, 'public', 'image.html'))); 
+        app.get("/", (req,res) => res.sendFile(path.join(APP_ROOT, 'public', 'image.html'))); 
       } else {
-        app.get("/", (req,res) => res.sendFile(path.join(__dirname, 'public', 'bundle.html'))); 
+        app.get("/", (req,res) => res.sendFile(path.join(APP_ROOT, 'public', 'bundle.html'))); 
       }
       app.get("/login", (req,res) => {
         const {token,ran,url:Url} = req.query; 
@@ -159,7 +159,7 @@
         }
       }); 
     }
-    app.use(express.static(path.resolve(__dirname,'public')));
+    app.use(express.static(path.resolve(APP_ROOT,'public')));
     app.post('/current/:current/event/:event', wrap(async (req, res) => {
       const actualUri = 'https://' + req.headers.host + ':8001' + req.url;
       const resp = await fetch(actualUri, {method: 'POST', body: JSON.stringify(req.body), 

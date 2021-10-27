@@ -3,11 +3,12 @@
   "version": "2.39.0",
   "description": "Fly a browser remotely from your browser? Yes.",
   "main": "index.js",
+  "type": "module",
   "bin": {
     "remoteview": "ViewFinder.js"
   },
   "scripts": {
-    "test": "bash ./test.sh",
+    "test": "bash ./run-test.sh",
     "devtest": "bash ./devtest.sh",
     "dev": "node-dev --inspect=127.0.0.1:8111 index.js",
     "start": "bash ./dstart.sh",
@@ -69,12 +70,12 @@
   },
   "devDependencies": {
     "@babel/cli": "latest",
-    "@babel/core": "latest",
-    "@babel/plugin-external-helpers": "^7.12.13",
-    "@babel/plugin-transform-runtime": "^7.14.2",
+    "@babel/core": "^7.15.8",
+    "@babel/plugin-external-helpers": "^7.14.5",
+    "@babel/plugin-transform-runtime": "^7.15.8",
     "@babel/polyfill": "^7.12.1",
-    "@babel/preset-env": "^7.14.2",
-    "@babel/runtime": "^7.14.0",
+    "@babel/preset-env": "^7.15.8",
+    "@babel/runtime": "^7.15.4",
     "@rollup/plugin-babel": "^5.2.1",
     "@rollup/plugin-commonjs": "^15.1.0",
     "@rollup/plugin-node-resolve": "latest",
@@ -89,14 +90,14 @@
     "@types/ws": "^7.2.6",
     "babel-plugin-external-helpers": "latest",
     "eslint": "^7.10.0",
-    "nexe": "latest",
+    "node-dev": "^7.1.0",
     "node-loader": "^1.0.1",
     "rollup": "^2.39.0",
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-commonjs": "^10.1.0",
     "typescript": "^3.9.7",
-    "webpack": "latest",
-    "webpack-cli": "^3.3.12",
+    "webpack": "^5.60.0",
+    "webpack-cli": "^4.9.1",
     "whatwg-fetch": "^3.6.2"
   }
 }
